@@ -430,6 +430,27 @@ describe 'QueryBuilder.js', ->
             catch e
                 expect("Illegal argument").to.be e.name
 
+    describe 'notIn', ->
+
+        it 'should output a NOT IN expression', ->
+            expect("id NOT IN (1, 2, 3)").to.be $["notIn"]("id", [
+                1
+                2
+                3
+            ])
+            expect("id NOT IN ('1', 'a', 3)").to.be $["notIn"]("id", [
+                "1"
+                "a"
+                3
+            ])
+
+        it 'should throw an exception if no parameters were passed', ->
+            try
+                $["notIn"]()
+                assert.fail()
+            catch e
+                expect("Illegal argument").to.be e.name
+
     describe 'as', ->
 
         it 'should throw an Illegal argument exception if origin or alias are not a string', ->

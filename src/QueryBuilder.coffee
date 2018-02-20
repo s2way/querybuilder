@@ -30,7 +30,7 @@ class QueryBuilder
         @insertInto table
         @query += "(#{fields})"
         @query += " VALUES "
-        
+
         escape = (value, escape) ->
             escape value
         @query += ("(#{_.map(_.values(obj), @escape).join()})" for obj in (filteredData or data))
@@ -116,6 +116,12 @@ class QueryBuilder
         throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if params is undefined or params.length is 0
         throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if field is null or typeof field isnt "string"
         field + " IN (" + @_fieldsToCommaList(params, true) + ")"
+
+    notIn: (field, params) ->
+        throw new Exceptions.InvalidMethod() if @n1sql
+        throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if params is undefined or params.length is 0
+        throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if field is null or typeof field isnt "string"
+        field + " NOT IN (" + @_fieldsToCommaList(params, true) + ")"
 
     build: ->
         query = @query.trim()
