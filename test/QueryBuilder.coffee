@@ -409,6 +409,32 @@ describe 'QueryBuilder.js', ->
             catch e
                 expect("Illegal argument").to.be e.name
 
+    describe 'if', ->
+
+        it 'should output a IF expression', ->
+            expect("IF (condition, first, second)").to.be $.if("condition", "first", "second")
+
+        it 'should throw an exception if first of the parameters is missing', ->
+            try
+                $.if()
+                assert.fail()
+            catch e
+                expect("Illegal argument").to.be e.name
+
+        it 'should throw an exception if second of the parameters is missing', ->
+            try
+                $.if('condition')
+                assert.fail()
+            catch e
+                expect("Illegal argument").to.be e.name
+
+        it 'should throw an exception if third of the parameters is missing', ->
+            try
+                $.if('condition', 'first')
+                assert.fail()
+            catch e
+                expect("Illegal argument").to.be e.name
+
     describe 'in', ->
 
         it 'should output an IN expression', ->

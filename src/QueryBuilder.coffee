@@ -1,6 +1,6 @@
 'use strict'
 _ = require 'underscore'
-exceptions = require 'exception'
+exceptions = require 'exceptions'
 
 class QueryBuilder
 
@@ -209,6 +209,10 @@ class QueryBuilder
     between: (value, comp1, comp2) ->
         throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if value is undefined or comp1 is undefined or comp2 is undefined
         value + " BETWEEN " + comp1 + " AND " + comp2
+
+    if: (condition, first, second) ->
+        throw new @Exceptions.Error @Exceptions.ILLEGAL_ARGUMENT if condition is undefined or first is undefined or second is undefined
+        "IF (" + condition + ", " + first + ", " + second + ")"
 
     and: ->
         conditions = arguments
