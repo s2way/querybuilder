@@ -1,11 +1,11 @@
 'use strict'
 _ = require 'underscore'
-exceptions = require 'exceptions'
+exception = require 'exception'
 
 class QueryBuilder
 
     constructor: (deps) ->
-        @Exceptions = deps?.Exceptions || exceptions
+        @Exceptions = deps?.Exception || exception
         @query = ''
 
     _fieldsToCommaList: (fields, escaping) ->
