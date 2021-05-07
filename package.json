@@ -28,6 +28,6 @@
   },
   "dependencies": {
     "exception": "git://github.com/s2way/Exception.git",
-    "underscore": "^1.8.3"
+    "underscore": "^1.12.1"
   }
 }
