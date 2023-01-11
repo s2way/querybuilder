@@ -24,7 +24,7 @@
     "coffee-script": "latest",
     "coffeelint": "^1.9.4",
     "expect.js": "^0.3.1",
-    "mocha": "^2.2.4"
+    "mocha": "^10.2.0"
   },
   "dependencies": {
     "exception": "git://github.com/s2way/Exception.git",
